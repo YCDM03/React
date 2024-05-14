@@ -23,9 +23,9 @@ function App() {
     setUsers([...users, { id, name, age }]);
   };
 
-  const removeUser = (id) => {
-    const newUsers = users.filter((e) => {
-      return e.id !== id;
+  const removeUser = (prevId) => {
+    const newUsers = users.filter(({ id }) => {
+      return id !== prevId;
     });
     setUsers(newUsers);
   };
@@ -53,7 +53,7 @@ function App() {
       </form>
       <ul style={{ margin: "0 auto", padding: "0" }}>
         {/* TODO: map 메소드를 이용해서 user 리스트를 렌더링하세요.  */}
-        {users.map(({ id, name, age }) => {
+        {users.map(({ id = "초기값", name = "초기값", age = "초기값" }) => {
           return (
             <li
               style={{
