@@ -51,24 +51,25 @@ function App() {
         />
         <button type="submit">사용자 추가</button>
       </form>
-      <ul>
+      <ul style={{ margin: "0 auto", padding: "0" }}>
         {/* TODO: map 메소드를 이용해서 user 리스트를 렌더링하세요.  */}
-        {users.map((e) => {
+        {users.map(({ id, name, age }) => {
           return (
             <li
               style={{
                 display: "flex",
                 justifyContent: "center",
-                gap: "10px",
+                gap: "20px",
                 border: "1px solid black",
+                marginBottom: "5px",
               }}
-              key={e.id}
+              key={id}
             >
-              <p>이름: {e.name}</p>
-              <p>나이: {e.age}</p>
+              <p>이름: {name}</p>
+              <p>나이: {age}</p>
               <button
                 onClick={() => {
-                  removeUser(e.id);
+                  removeUser(id);
                 }}
               >
                 삭제
